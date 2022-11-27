@@ -1,0 +1,109 @@
+{% extends 'home/homebase.html' %}
+
+{% load static %}
+
+{% block style %}
+
+body {
+background: rgb(99, 39, 120)
+}
+
+.form-control:focus {
+box-shadow: none;
+border-color: #BA68C8
+}
+
+.profile-button {
+background: rgb(99, 39, 120);
+box-shadow: none;
+border: none
+}
+
+.profile-button:hover {
+background: #682773
+}
+
+.profile-button:focus {
+background: #682773;
+box-shadow: none
+}
+
+.profile-button:active {
+background: #682773;
+box-shadow: none
+}
+
+.back:hover {
+color: #682773;
+cursor: pointer
+}
+
+.labels {
+font-size: 11px
+}
+
+.add-experience:hover {
+background: #BA68C8;
+color: #fff;
+cursor: pointer;
+border: solid 1px #BA68C8
+}
+
+
+{% endblock style %}
+
+
+{% block body %}
+
+<div class="container rounded bg-white borderd-5 " style="width: 50%;">
+    <form action="" method="post" enctype="multipart/form-data">
+
+        <div class="row">
+            <!-- {% comment %} <div class="col-md-3 border-right"> {% endcomment %} -->
+            <!-- {% comment %} </div> {% endcomment %} -->
+
+            {% csrf_token %}
+            
+            <div class="col border-right" style="height:100% ; width:50%">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Profile Settings</h4>
+                </div>
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5"
+                        width="150px" src="{{user_profile.profile_photo.url}}"><span
+                        class="font-weight-bold">{{user_profile.user}}</span><span
+                        class="text-black-50">{{user_profile.username}}</span><span> </span></div>
+                <div class="p-3 py-5">
+                    <div class="col-md-6"><label class="labels">profile photo </label><input type="file"
+                        class="form-control" name="profilephoto" placeholder="select your image" value=""></div>
+                    <!-- <div class="row mt-2">
+                        <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control"
+                                placeholder="first name" value=""></div>
+                        <div class="col-md-6"><label class="labels">Surname</label><input type="text"
+                                class="form-control" value="" placeholder="surname"></div>
+                    </div> -->
+                    <div class="row mt-3">
+                        <div class="col-md-12"><label class="labels">Location </label><input type="text"
+                                class="form-control" name="location" placeholder="enter phone Location" value=""></div>
+
+
+                        <!-- <div class="col-md-12"><label class="labels">Email ID</label><input type="text"
+                                class="form-control" placeholder="enter email id" value=""></div> -->
+                        <div class="col-md-12"><label class="labels">Bio</label><textarea type="text"
+                                class="form-control" name="bio" style="height:125px;" value=""></textarea></div>
+                    </div>
+
+                    <div class="mt-5 text-center">
+                        
+                        <button class="btn btn-primary" type="submit">submit</button>
+                        {% comment %} <button class="btn btn-primary" type="button">Go to Profile</button> {% endcomment %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+</div>
+
+
+{% endblock body %}

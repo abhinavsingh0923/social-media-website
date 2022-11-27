@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static '/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static '/awsomefont/fonts.min.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <!-- <link rel="stylesheet" href="{% static '/bootstrap/icons/icons.css' %}">  -->
+    <style>
+
+.card{
+  width: 400px;
+  border: none;
+  border-radius: 10px;
+
+}
+
+.stats{
+    background: #f2f5f8 !important;
+    color: #000 !important;
+}
+.articles{
+  font-size:10px;
+  color: #a1aab9;
+}
+.number1{
+  font-weight:500;
+}
+.followers{
+    font-size:10px;
+    color: #a1aab9;
+
+}
+.number2{
+  font-weight:500;
+}
+.rating{
+    font-size:10px;
+    color: #a1aab9;
+}
+.number3{
+  font-weight:500;
+}
+
+
+
+.sidenav {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    overflow-x: hidden; /* Disable horizontal scroll */
+  }
+
+  .main {
+    margin-left: 160px; /* Same as the width of the sidebar */
+    padding: 0px 10px;
+  }
+
+
+
+{% block style %}
+{% endblock style %}
+    </style>
+</head>
+
+<body style='background-image:url({% static '/images/background_images/bground.jpg' %}); background-attachment: fixed;'>
+
+            <div class="sidenav col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                    <a href="{% url 'index' %}"
+                        class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                        <h2 class='mt-3'>Mybook</h2>    
+                    </a>
+                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+                        id="menu">
+                        <li class="nav-item mt-5">
+                            <a href="{% url 'index' %}" class="nav-link text-white align-middle px-0">
+                                <h5><i class="fs-4 bi-house"></i><span class="ms-1 d-none d-sm-inline">Home</span></h5>
+                            </a>
+                        </li>
+                        <li class="nav-item mt-5">
+                            <a href="{% url 'search' %}" class="nav-link text-white align-middle px-0">
+                                <h5><i class="fs-4 bi-search"></i><span class="ms-1 d-none d-sm-inline">Search</span></h5>
+                            </a>
+                        </li>
+
+
+                        </li>
+                        <li class='mt-4'>
+                            <a href="{% url 'addpostfunction' %}"  class="nav-link px-0 text-white align-middle">
+                                <h5><i class="fs-4 bi bi-plus-square"></i> 
+                                    <span class="ms-1 d-none d-sm-inline">Post</span>
+                            </a></h5>
+                        </li>
+                        <li class='mt-4'>
+                            <a href="{% url 'profilepage' %}" class="nav-link px-0 text-white align-middle">
+                                <h5><i class="fs-4 bi bi-person-fill"></i><span
+                                        class="ms-1 d-none d-sm-inline">Profile</span>
+                            </a>
+                        </li>
+                        </h5>
+                        </li>
+                    </ul>
+                    <hr>
+                    <div class="dropdown pb-4">
+                        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                            id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="{% static 'images/profile_img.png' %}" alt="hugenerd" width="30" height="30" class="rounded-circle">
+                            <span class="d-none d-sm-inline mx-1">{{request.user}}</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                            <li><a class="dropdown-item" href="{% url 'profilepage' %}">Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Settings</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="{% url 'handlelogout' %}">Sign out</a></li>
+                        </ul>
+                    </div>
+                </div>
+                    
+            </div>
+            <div class="col py-3">
+                <div class="main">
+                {% block body %}
+                
+                
+                
+                {% endblock body %}
+            </div>
+            </div>
+            
+
+
+
+
+
+    <script src="{% static '/jquery/jq.js' %}"></script>
+    <script src="{% static '/bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+
+</html>
